@@ -114,6 +114,11 @@ Parameters:
 
 - `userId` (required): ID of the user
 
+Returns:
+
+- 200: All borrow records for the user
+- 404: User not found
+
 Example Request:
 
 ```bash
@@ -139,7 +144,7 @@ Example Response:
 
 Endpoint to borrow a book for a user.
 
-**POST** `/borrows`
+**POST** `/books/borrow`
 
 Request Body:
 
@@ -171,7 +176,7 @@ Error Responses:
 
 Endpoint to return a borrowed book.
 
-**PUT** `/borrows/return`
+**POST** `/books/return`
 
 Request Body:
 
@@ -189,7 +194,8 @@ Response:
   "userId": 123,
   "bookId": 1,
   "borrowDate": "2024-02-04T08:26:50.000Z",
-  "returnDate": "2024-02-04T10:26:50.000Z"
+  "returnDate": "2024-02-04T10:26:50.000Z",
+  "status": "returned"
 }
 ```
 
