@@ -18,22 +18,41 @@ yarn install
 ```
 
 3. Configure PostgreSQL:
-   - Create a new PostgreSQL database
-   - Update `src/entities/ormconfig.json` with your database credentials:
 
-```json
-{
-  "name": "default",
-  "type": "postgres",
-  "host": "localhost",
-  "port": 5432,
-  "username": "your_username",
-  "password": "your_password",
-  "database": "your_database_name",
-  "synchronize": false,
-  "entities": ["entities/*.js"]
-}
-```
+   - Create a new PostgreSQL database
+   - Update both TypeORM configuration files with your database credentials:
+
+   a. Update `src/entities/ormconfig.json`:
+
+   ```json
+   {
+     "name": "default",
+     "type": "postgres",
+     "host": "localhost",
+     "port": 5432,
+     "username": "your_username",
+     "database": "your_database_name",
+     "synchronize": false,
+     "entities": ["entities/*.js"]
+   }
+   ```
+
+   b. Update database configuration in `src/app.module.ts`:
+
+   ```typescript
+   TypeOrmModule.forRoot({
+     type: 'postgres',
+     host: 'localhost',
+     port: 5432,
+     username: 'your_username',
+     database: 'your_database_name',
+     entities: [__dirname + '/entities/entities/*.js'],
+     synchronize: false,
+     logging: true,
+   });
+   ```
+
+   Important: Make sure both configurations match exactly to avoid connection issues.
 
 ## Running the Application
 

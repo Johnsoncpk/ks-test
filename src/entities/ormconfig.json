@@ -4,9 +4,9 @@
     "type": "postgres",
     "host": "localhost",
     "port": 5432,
-    "username": "johnsonc",
+    "username": "ks_lab",
     "password": "",
-    "database": "",
+    "database": "ks_lab",
     "synchronize": false,
     "entities": ["entities/*.js"]
   }
