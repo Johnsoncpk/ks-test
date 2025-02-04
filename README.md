@@ -116,6 +116,69 @@ Example Response:
 ]
 ```
 
+### Borrow Book
+
+Endpoint to borrow a book for a user.
+
+**POST** `/borrows`
+
+Request Body:
+
+```json
+{
+  "userId": 123,
+  "bookId": 1
+}
+```
+
+Response:
+
+```json
+{
+  "id": 1,
+  "userId": 123,
+  "bookId": 1,
+  "borrowDate": "2024-02-04T08:26:50.000Z",
+  "returnDate": null
+}
+```
+
+Error Responses:
+
+- 404: User or book not found
+- 400: Book is already borrowed
+
+### Return Book
+
+Endpoint to return a borrowed book.
+
+**PUT** `/borrows/return`
+
+Request Body:
+
+```json
+{
+  "bookId": 1
+}
+```
+
+Response:
+
+```json
+{
+  "id": 1,
+  "userId": 123,
+  "bookId": 1,
+  "borrowDate": "2024-02-04T08:26:50.000Z",
+  "returnDate": "2024-02-04T10:26:50.000Z"
+}
+```
+
+Error Responses:
+
+- 404: Book not found
+- 400: Book is not currently borrowed
+
 ## Testing
 
 ### Run Unit Tests
